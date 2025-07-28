@@ -32,11 +32,12 @@ html {
 /* Ensure smooth scrolling still works */
 html {
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Navigation Styles */
 .navbar {
-    padding: 15px 0;
+    padding: 20px 0;
     background-color: rgba(31, 36, 45, 0.95);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
@@ -397,14 +398,15 @@ html {
     -webkit-text-stroke: 1px #00ffff;
 }
 
-.skills-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 50px;
-    margin-top: 50px;
-}
+    .skills-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 50px;
+        margin-top: 50px;
+        padding: 0 15px;
+    }
 
 .skill-item {
     text-align: center;
@@ -695,12 +697,13 @@ footer p {
     -webkit-text-stroke: 1px #00ffff;
 }
 
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    margin-top: 50px;
-}
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        margin-top: 50px;
+        padding: 0 15px;
+    }
 
 /* Contact Info Section */
 .contact-info-section {
@@ -903,6 +906,10 @@ footer p {
         0 4px 15px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(5px);
+    min-height: 44px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .form-control:focus {
@@ -1037,390 +1044,315 @@ textarea.form-control {
     100% { transform: rotate(360deg); }
 }
 
-/* Full Page Congratulations Overlay */
-.full-page-congrats {
+/* Professional Success Notification */
+.success-notification {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(135deg, #1a1a1a, #000000);
+    top: 20px;
+    right: 20px;
+    max-width: 400px;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(124, 240, 61, 0.1));
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(0, 255, 255, 0.2);
     z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     opacity: 0;
-    visibility: hidden;
-    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     overflow: hidden;
 }
 
-.full-page-congrats.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.congrats-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(255, 0, 0, 0.2) 0%, transparent 50%);
-}
-
-.fire-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle, #ff4500 1px, transparent 1px),
-        radial-gradient(circle, #ff6347 1px, transparent 1px);
-    background-size: 50px 50px, 30px 30px;
-    background-position: 0 0, 25px 25px;
-    animation: fireMove 3s linear infinite;
-}
-
-.explosion-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle, #ffd700 2px, transparent 2px),
-        radial-gradient(circle, #ff4500 1px, transparent 1px);
-    background-size: 40px 40px, 20px 20px;
-    background-position: 0 0, 20px 20px;
-    animation: explosionMove 2s linear infinite reverse;
-}
-
-.congrats-content {
-    text-align: center;
-    z-index: 10;
-    position: relative;
-    max-width: 600px;
-    padding: 40px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 3px solid #ff4500;
-    border-radius: 20px;
-    box-shadow: 
-        0 0 50px rgba(255, 69, 0, 0.5),
-        inset 0 0 50px rgba(255, 69, 0, 0.1);
+/* Professional Error Notification */
+.error-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 400px;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 64, 64, 0.1));
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    border-radius: 15px;
     backdrop-filter: blur(10px);
-    transform: scale(0.5);
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 107, 107, 0.2);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
 }
 
-.full-page-congrats.show .congrats-content {
-    transform: scale(1);
+/* Form Success Message */
+.form-success-message {
+    margin-bottom: 30px;
 }
 
-.congrats-icon {
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(135deg, #ff4500, #ff6347);
+.success-alert {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(124, 240, 61, 0.1));
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(0, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: slideInFromTop 0.5s ease-out;
+}
+
+.success-alert i {
+    color: #00ffff;
+    font-size: 24px;
+    animation: notificationPulse 2s ease-in-out infinite;
+}
+
+.success-alert span {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    flex: 1;
+}
+
+.success-alert small {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+}
+
+.success-alert small:not(:last-child) {
+    margin-bottom: 3px;
+}
+
+/* Form Error Message */
+.form-error-message {
+    margin-bottom: 20px;
+}
+
+.error-alert {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 69, 0, 0.1));
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.2);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.error-alert i {
+    color: #ff4444;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.error-alert span {
+    color: #ff4444;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .error-alert {
+        padding: 12px 15px;
+        gap: 10px;
+    }
+    
+    .error-alert i {
+        font-size: 18px;
+    }
+    
+    .error-alert span {
+        font-size: 14px;
+    }
+}
+
+.success-notification.show,
+.error-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    position: relative;
+}
+
+.notification-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #00ffff, #7cf03d);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 30px;
-    animation: skullPulse 2s ease-in-out infinite;
-    box-shadow: 
-        0 0 40px rgba(255, 69, 0, 0.8),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
+    flex-shrink: 0;
+    animation: notificationPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
 
-.congrats-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: skullRotate 3s linear infinite;
+.error-notification .notification-icon {
+    background: linear-gradient(135deg, #ff6b6b, #ff4040);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
 }
 
-.congrats-icon i {
-    font-size: 60px;
-    color: #000000;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
-    animation: skullFloat 1.5s ease-in-out infinite alternate;
-    z-index: 2;
-    position: relative;
+.notification-icon i {
+    font-size: 24px;
+    color: #1f242d;
+    animation: notificationBounce 1s ease-in-out infinite;
 }
 
-.congrats-title {
-    color: #ff4500;
-    font-size: 4rem;
-    margin: 0 0 20px 0;
-    text-shadow: 
-        0 0 30px rgba(255, 69, 0, 0.8),
-        0 0 60px rgba(255, 69, 0, 0.4);
-    font-weight: 900;
-    letter-spacing: 3px;
-    animation: titleShake 0.5s ease-in-out infinite alternate;
-    text-transform: uppercase;
+.notification-text {
+    flex: 1;
 }
 
-.congrats-subtitle {
-    color: #ffffff;
-    font-size: 2.5rem;
-    margin: 0 0 30px 0;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    font-weight: 700;
-    letter-spacing: 2px;
-    animation: subtitleGlow 2s ease-in-out infinite alternate;
-    text-transform: uppercase;
-}
-
-.congrats-message {
-    color: #cccccc;
-    font-size: 1.2rem;
-    margin: 0 0 40px 0;
-    line-height: 1.6;
-    font-weight: 500;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.congrats-stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 40px 0;
-    gap: 20px;
-}
-
-.stat {
-    text-align: center;
-    padding: 20px;
-    background: rgba(255, 69, 0, 0.1);
-    border: 2px solid rgba(255, 69, 0, 0.3);
-    border-radius: 15px;
-    min-width: 120px;
-    animation: statPulse 2s ease-in-out infinite;
-}
-
-.stat-number {
-    display: block;
-    color: #ff4500;
-    font-size: 1.5rem;
-    font-weight: 900;
-    text-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
-    margin-bottom: 5px;
-}
-
-.stat-label {
-    display: block;
-    color: #ffffff;
-    font-size: 0.9rem;
+.notification-text h3 {
+    color: #00ffff;
+    font-size: 18px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin: 0 0 5px 0;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
-.congrats-actions {
-    margin-top: 30px;
+.error-notification .notification-text h3 {
+    color: #ff6b6b;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
 }
 
-.close-congrats {
-    background: linear-gradient(135deg, #ff4500, #ff6347);
-    color: #000000;
+.notification-text p {
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.notification-close {
+    background: none;
     border: none;
-    padding: 15px 30px;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
     cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.close-congrats:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 69, 0, 0.6);
-    background: linear-gradient(135deg, #ff6347, #ff4500);
+.notification-close:hover {
+    color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+    transform: scale(1.1);
 }
 
-.floating-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
+.notification-progress {
+    height: 3px;
+    background: linear-gradient(90deg, #00ffff, #7cf03d);
     width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
+    animation: notificationProgress 5s linear;
 }
 
-.floating-icon {
-    position: absolute;
-    font-size: 2rem;
-    animation: floatAround 6s linear infinite;
-    opacity: 0.7;
+.error-notification .notification-progress {
+    background: linear-gradient(90deg, #ff6b6b, #ff4040);
 }
 
-.floating-icon:nth-child(1) {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.floating-icon:nth-child(2) {
-    top: 20%;
-    right: 15%;
-    animation-delay: 1s;
-}
-
-.floating-icon:nth-child(3) {
-    bottom: 20%;
-    left: 20%;
-    animation-delay: 2s;
-}
-
-.floating-icon:nth-child(4) {
-    bottom: 10%;
-    right: 10%;
-    animation-delay: 3s;
-}
-
-.floating-icon:nth-child(5) {
-    top: 50%;
-    left: 5%;
-    animation-delay: 4s;
-}
-
-.floating-icon:nth-child(6) {
-    top: 30%;
-    right: 5%;
-    animation-delay: 5s;
-}
-
-@keyframes fireMove {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-50px);
-    }
-}
-
-@keyframes explosionMove {
-    0% {
-        transform: translateX(0) rotate(0deg);
-    }
-    100% {
-        transform: translateX(-30px) rotate(360deg);
-    }
-}
-
-@keyframes skullPulse {
+@keyframes notificationPulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 40px rgba(255, 69, 0, 0.8);
-    }
-    50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 60px rgba(255, 69, 0, 1);
-    }
-}
-
-@keyframes skullRotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes skullFloat {
-    0% {
-        transform: translateY(0) rotate(-2deg);
-    }
-    100% {
-        transform: translateY(-8px) rotate(2deg);
-    }
-}
-
-@keyframes titleShake {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(3px);
-    }
-}
-
-@keyframes subtitleGlow {
-    0% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    }
-    100% {
-        text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.3);
-    }
-}
-
-@keyframes statPulse {
-    0%, 100% {
-        transform: scale(1);
-        border-color: rgba(255, 69, 0, 0.3);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
     }
     50% {
         transform: scale(1.05);
-        border-color: rgba(255, 69, 0, 0.6);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
     }
 }
 
-@keyframes floatAround {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 0.7;
-    }
-    25% {
-        transform: translate(20px, -20px) rotate(90deg);
-        opacity: 1;
+@keyframes notificationBounce {
+    0%, 100% {
+        transform: translateY(0);
     }
     50% {
-        transform: translate(0, -40px) rotate(180deg);
-        opacity: 0.7;
-    }
-    75% {
-        transform: translate(-20px, -20px) rotate(270deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(0, 0) rotate(360deg);
-        opacity: 0.7;
+        transform: translateY(-3px);
     }
 }
 
-/* Confetti Animation */
-.confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background: #00ffff;
-    top: -10px;
-    z-index: 999;
-    animation: confettiFall linear forwards;
-    border-radius: 2px;
-}
-
-@keyframes confettiFall {
+@keyframes notificationProgress {
     0% {
-        transform: translateY(-10px) rotate(0deg);
-        opacity: 1;
+        width: 100%;
     }
     100% {
-        transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
+        width: 0%;
     }
 }
+
+/* Mobile responsive for notification */
+@media (max-width: 768px) {
+    .success-notification,
+    .error-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        transform: translateY(-100%);
+    }
+    
+    .success-notification.show,
+    .error-notification.show {
+        transform: translateY(0);
+    }
+    
+    .success-alert {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .success-alert span {
+        font-size: 14px;
+    }
+    
+    .success-alert small {
+        font-size: 11px;
+    }
+    
+    .notification-content {
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .notification-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .notification-icon i {
+        font-size: 20px;
+    }
+    
+    .notification-text h3 {
+        font-size: 16px;
+    }
+    
+    .notification-text p {
+        font-size: 13px;
+    }
+}
+
+
 
 /* Enhanced Button Success State */
 .submit-btn.success {
@@ -1682,18 +1614,53 @@ textarea.form-control {
 
 @media (max-width: 768px) {
     /* Mobile Navigation */
+    .navbar {
+        padding: 20px 0;
+    }
+    
+    .navbar .row {
+        position: relative;
+    }
+    
+    .navbar .col-lg-2 {
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1002;
+        width: auto;
+    }
+    
+    /* Hide desktop navigation on mobile */
+    .nav-links:not(.active) {
+        display: none !important;
+    }
+    
+    .navbar .col-lg-10 {
+        position: relative;
+    }
+    
     .mobile-nav-toggle {
-        display: block;
+        display: block !important;
         position: absolute;
         right: 15px;
         top: 50%;
         transform: translateY(-50%);
+        min-width: 44px;
+        min-height: 44px;
+        touch-action: manipulation;
+        z-index: 1003;
+    }
+    
+    /* Hide desktop navigation on mobile */
+    .nav-links:not(.active) {
+        display: none !important;
     }
     
     .nav-links {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 90px;
         left: 0;
         right: 0;
         background-color: rgba(31, 36, 45, 0.98);
@@ -1705,11 +1672,17 @@ textarea.form-control {
         border-top: 1px solid rgba(0, 255, 255, 0.2);
         transform: translateY(-100%);
         transition: all 0.3s ease;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
     }
     
     .nav-links.active {
         display: flex;
         transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
     
     .nav-links li {
@@ -1729,6 +1702,10 @@ textarea.form-control {
         color: #ffffff;
         text-decoration: none;
         transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .nav-links li a:hover {
@@ -1771,6 +1748,9 @@ textarea.form-control {
         height: 45px;
         width: 45px;
         font-size: 24px;
+        min-height: 44px;
+        min-width: 44px;
+        touch-action: manipulation;
     }
     
     .hero .img-box {
@@ -1866,6 +1846,7 @@ textarea.form-control {
     .contact-container {
         grid-template-columns: 1fr;
         gap: 30px;
+        padding: 0 15px;
     }
     
     .contact-info-section,
@@ -1928,6 +1909,8 @@ textarea.form-control {
     .submit-btn {
         padding: 12px 25px;
         font-size: 15px;
+        min-height: 44px;
+        touch-action: manipulation;
     }
     
     .skills {
@@ -1966,7 +1949,20 @@ textarea.form-control {
 
 @media (max-width: 576px) {
     .navbar {
-        padding: 10px 0;
+        padding: 20px 0;
+    }
+    
+    .navbar .col-lg-2 {
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1002;
+    }
+    
+    /* Hide desktop navigation on mobile */
+    .nav-links:not(.active) {
+        display: none !important;
     }
     
     .navbar h2 a {
@@ -2180,6 +2176,23 @@ textarea.form-control {
 }
 
 @media (max-width: 480px) {
+    .navbar {
+        padding: 20px 0;
+    }
+    
+    .navbar .col-lg-2 {
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1002;
+    }
+    
+    /* Hide desktop navigation on mobile */
+    .nav-links:not(.active) {
+        display: none !important;
+    }
+    
     .hero h1 {
         font-size: 24px;
     }

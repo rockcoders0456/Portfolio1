@@ -4,16 +4,16 @@
 const targetPercentages = [90, 85, 83, 75, 72];
 
 // DOM Content Loaded Event
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    initializeSkillsAnimation();
-    initializeMobileNavigation();
-    initializeSmoothScrolling();
-    initializeContactForm();
-    initializeScrollAnimations();
-    initializeTypingAnimation();
-    initializeScrollProgress();
-});
+         document.addEventListener('DOMContentLoaded', function() {
+             // Initialize all functionality
+             initializeSkillsAnimation();
+             initializeMobileNavigation();
+             initializeSmoothScrolling();
+             initializeContactForm();
+             initializeScrollAnimations();
+             initializeTypingAnimation();
+             initializeScrollProgress();
+         });
 
 // Skills Animation with Intersection Observer
 function initializeSkillsAnimation() {
@@ -41,8 +41,8 @@ function initializeSkillsAnimation() {
             }
         });
     }, {
-        threshold: 0.3,
-        rootMargin: '-50px'
+        threshold: 0.2,
+        rootMargin: '-30px'
     });
     
     skillItems.forEach(item => {
@@ -155,8 +155,7 @@ function initializeContactForm() {
             input.addEventListener('input', () => clearFieldError(input));
         });
         
-        // Form submission
-        contactForm.addEventListener('submit', handleFormSubmission);
+
     }
 }
 
@@ -242,132 +241,13 @@ function validateForm() {
     return isValid;
 }
 
-// Handle form submission
-function handleFormSubmission(e) {
-    e.preventDefault();
-    
-    if (validateForm()) {
-        const submitBtn = document.querySelector('.submit-btn');
-        const originalText = submitBtn.innerHTML;
-        
-        // Show loading state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-        
-        // Simulate form submission
-        setTimeout(() => {
-            // Reset form
-            document.getElementById('contactForm').reset();
-            
-            // Remove validation classes
-            document.querySelectorAll('.form-control').forEach(input => {
-                input.classList.remove('error');
-            });
-            
-            // Show success notification
-            createSuccessNotification();
-            createConfetti();
-            
-            // Reset button after 4 seconds
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 4000);
-            
-        }, 2000);
-    }
-}
 
-// Create full-page congratulations overlay
-function createSuccessNotification() {
-    const overlay = document.createElement('div');
-    overlay.className = 'full-page-congrats';
-    overlay.innerHTML = `
-        <div class="congrats-background">
-            <div class="fire-particles"></div>
-            <div class="explosion-particles"></div>
-        </div>
-        <div class="congrats-content">
-            <div class="congrats-icon">
-                <i class="fas fa-skull-crossbones"></i>
-            </div>
-            <h1 class="congrats-title">BOOM! 💥</h1>
-            <h2 class="congrats-subtitle">MESSAGE SENT!</h2>
-            <p class="congrats-message">Your message is now in the wild! I'll hunt it down and reply fast!</p>
-            <div class="congrats-stats">
-                <div class="stat">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">SUCCESS</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">FAST</span>
-                    <span class="stat-label">REPLY</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">EPIC</span>
-                    <span class="stat-label">RESULT</span>
-                </div>
-            </div>
-            <div class="congrats-actions">
-                <button class="close-congrats" onclick="closeCongrats()">
-                    <i class="fas fa-times"></i> CLOSE
-                </button>
-            </div>
-        </div>
-        <div class="floating-elements">
-            <span class="floating-icon">💀</span>
-            <span class="floating-icon">⚡</span>
-            <span class="floating-icon">🔥</span>
-            <span class="floating-icon">💣</span>
-            <span class="floating-icon">⚔️</span>
-            <span class="floating-icon">🛡️</span>
-        </div>
-    `;
-    
-    document.body.appendChild(overlay);
-    
-    // Show overlay with animation
-    setTimeout(() => {
-        overlay.classList.add('show');
-    }, 100);
-    
-    // Auto-close after 8 seconds
-    setTimeout(() => {
-        closeCongrats();
-    }, 8000);
-}
 
-// Close congratulations overlay
-function closeCongrats() {
-    const overlay = document.querySelector('.full-page-congrats');
-    if (overlay) {
-        overlay.classList.remove('show');
-        setTimeout(() => {
-            overlay.remove();
-        }, 1000);
-    }
-}
 
-// Create confetti effect
-function createConfetti() {
-    const colors = ['#00ffff', '#7cf03d', '#ff6b6b', '#4ecdc4', '#45b7d1'];
-    
-    for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDelay = Math.random() * 3 + 's';
-        confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-        
-        document.body.appendChild(confetti);
-        
-        // Remove confetti after animation
-        setTimeout(() => {
-            confetti.remove();
-        }, 5000);
-    }
-}
+
+
+
+
 
 // Active Section Tracking
 function updateActiveSection() {

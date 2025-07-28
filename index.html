@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +41,7 @@
     <link rel="stylesheet" href="./assets/Laibraries/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <link rel="stylesheet" href="./assets/CSS/style.css">
-    
+
     <!-- JavaScript -->
     <script src="./assets/JS/script.js" defer></script>
 </head>
@@ -378,7 +379,9 @@
                             </div>
 
                             <div class="contact-form-section">
-                                <form class="contact-form" id="contactForm" novalidate>
+                                <form action="./assets/PHP/index.php" method="post" enctype="multipart/form-data"
+                                    class="contact-form" id="contactForm" name="contact">
+                                    <input type="hidden" name="form-name" value="contact" />
                                     <div class="form-group">
                                         <label for="name" class="form-label">Full Name *</label>
                                         <input type="text" id="name" name="name" class="form-control" required
@@ -408,7 +411,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="submit-btn">
+                                        <button type="submit" class="submit-btn" name="submit">
                                             <span class="btn-text">Send Message</span>
                                             <span class="btn-icon">
                                                 <i class="fas fa-paper-plane"></i>
@@ -423,7 +426,6 @@
             </div>
         </section>
     </main>
-
     <footer>
         <div class="container">
             <div class="row">
